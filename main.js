@@ -1,82 +1,44 @@
-/* ============================================================
-   WHALE MENTORS — main.js
-   Cursor-tracking blobs · Nav · Tabs · Scroll reveal · Form
-   ============================================================ */
-
 'use strict';
 
-/* --- Cursor-tracking gradient blobs ----------------------- */
-(function initBlobs() {
-  const blobBlue = document.getElementById('blobBlue');
-  const blobRed  = document.getElementById('blobRed');
-  if (!blobBlue || !blobRed) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+/* ============================================================
+   TICKER BAR
+   ============================================================ */
+(function initTicker() {
+  const bar   = document.getElementById('tickerBar');
+  const close = document.getElementById('tickerClose');
+  const nav   = document.getElementById('navbar');
+  if (!bar || !close) return;
 
-  const HALF = 380; // half of blob size (760px / 2)
-
-  let targetX = window.innerWidth  * 0.4;
-  let targetY = window.innerHeight * 0.5;
-  let blueX   = targetX;
-  let blueY   = targetY;
-  let redX    = window.innerWidth  * 0.75;
-  let redY    = window.innerHeight * 0.2;
-
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  function tick() {
-    // Blue blob follows cursor with slight lag
-    blueX = lerp(blueX, targetX, 0.055);
-    blueY = lerp(blueY, targetY, 0.055);
-
-    // Red blob drifts to the opposite side
-    redX = lerp(redX, window.innerWidth  - targetX, 0.03);
-    redY = lerp(redY, window.innerHeight - targetY * 0.6, 0.03);
-
-    blobBlue.style.transform = `translate(${blueX - HALF}px, ${blueY - HALF}px)`;
-    blobRed.style.transform  = `translate(${redX  - HALF}px, ${redY  - HALF}px)`;
-
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('mousemove', (e) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
+  close.addEventListener('click', () => {
+    bar.classList.add('is-hidden');
+    if (nav) nav.classList.add('ticker-gone');
   });
-
-  window.addEventListener('touchmove', (e) => {
-    if (e.touches.length) {
-      targetX = e.touches[0].clientX;
-      targetY = e.touches[0].clientY;
-    }
-  }, { passive: true });
-
-  tick();
 })();
 
 
-/* --- Mobile nav toggle ------------------------------------ */
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
 (function initNav() {
   const toggle = document.getElementById('navToggle');
-  const links  = document.getElementById('navLinks');
-  if (!toggle || !links) return;
+  const mobile = document.getElementById('navMobile');
+  if (!toggle || !mobile) return;
 
   function close() {
     toggle.setAttribute('aria-expanded', 'false');
-    links.classList.remove('nav__links--open');
+    mobile.hidden = true;
   }
 
   toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    links.classList.toggle('nav__links--open', !isOpen);
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    mobile.hidden = open;
   });
 
-  links.querySelectorAll('.nav__link').forEach(link => {
-    link.addEventListener('click', close);
-  });
+  mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 
   document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target) && !links.contains(e.target)) close();
+    if (!toggle.contains(e.target) && !mobile.contains(e.target)) close();
   });
 
   document.addEventListener('keydown', (e) => {
@@ -85,7 +47,106 @@
 })();
 
 
-/* --- Tab switching ---------------------------------------- */
+/* ============================================================
+   HERO CANVAS — grid of pulsing dots
+   ============================================================ */
+(function initCanvas() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const ctx = canvas.getContext('2d');
+  const SPACING = 40;
+  const BLUE    = [30, 110, 243];
+
+  let W, H, cols, rows, dots;
+  let mouse = { x: -9999, y: -9999 };
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    cols = Math.ceil(W / SPACING) + 1;
+    rows = Math.ceil(H / SPACING) + 1;
+    dots = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        dots.push({
+          x:     c * SPACING,
+          y:     r * SPACING,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.4 + Math.random() * 0.4,
+        });
+      }
+    }
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  window.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    t += 0.016;
+    for (const dot of dots) {
+      const pulse = (Math.sin(t * dot.speed + dot.phase) + 1) / 2;
+
+      const dx   = dot.x - mouse.x;
+      const dy   = dot.y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const prox = Math.max(0, 1 - dist / 160);
+
+      const alpha = 0.08 + pulse * 0.1 + prox * 0.55;
+      const r2    = 1.5 + prox * 2;
+
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, r2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${alpha})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+
+/* ============================================================
+   SECTION DIVIDER DOTS — scroll-driven horizontal slide
+   ============================================================ */
+(function initDividers() {
+  const dividers = document.querySelectorAll('.sdivider');
+  if (!dividers.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function update() {
+    const vh = window.innerHeight;
+    dividers.forEach(div => {
+      const dot  = div.querySelector('.sdivider__dot');
+      if (!dot) return;
+      const rect = div.getBoundingClientRect();
+      const progress = 1 - (rect.top / vh);
+      const clamped  = Math.max(0, Math.min(1, progress));
+      const maxX     = div.offsetWidth - 32;
+      dot.style.transform = `translateY(-50%) translateX(${clamped * maxX}px)`;
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+
+/* ============================================================
+   TAB SWITCHING
+   ============================================================ */
 (function initTabs() {
   const buttons = document.querySelectorAll('[role="tab"]');
   const panels  = document.querySelectorAll('[role="tabpanel"]');
@@ -93,25 +154,21 @@
 
   function activate(btn) {
     const target = btn.getAttribute('aria-controls');
-
     buttons.forEach(b => {
       b.setAttribute('aria-selected', 'false');
       b.classList.remove('tab--active');
     });
-
     panels.forEach(p => {
-      const active = p.id === target;
-      p.classList.toggle('tab-panel--active', active);
-      p.hidden = !active;
+      const on = p.id === target;
+      p.classList.toggle('tab-panel--active', on);
+      p.hidden = !on;
     });
-
     btn.setAttribute('aria-selected', 'true');
     btn.classList.add('tab--active');
   }
 
   buttons.forEach((btn, i) => {
     btn.addEventListener('click', () => activate(btn));
-
     btn.addEventListener('keydown', (e) => {
       let next = null;
       if (e.key === 'ArrowRight') next = buttons[(i + 1) % buttons.length];
@@ -124,12 +181,12 @@
 })();
 
 
-/* --- Scroll-reveal (Intersection Observer) ---------------- */
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
 (function initReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal-child').forEach(el => {
-      el.classList.add('is-visible');
-    });
+    document.querySelectorAll('.reveal-child').forEach(el => el.classList.add('is-visible'));
     return;
   }
 
@@ -140,26 +197,25 @@
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    rootMargin: '-50px 0px',
-    threshold: 0.08,
-  });
+  }, { rootMargin: '-50px 0px', threshold: 0.08 });
 
   document.querySelectorAll('.reveal-child').forEach(el => observer.observe(el));
 })();
 
 
-/* --- Waitlist form ---------------------------------------- */
+/* ============================================================
+   WAITLIST FORM
+   ============================================================ */
 (function initForm() {
-  const form = document.querySelector('.waitlist__form');
+  const form = document.querySelector('.wl-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const input  = form.querySelector('.waitlist__input');
-    const btn    = form.querySelector('.waitlist__submit');
-    const email  = input.value.trim();
-    const re     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const input = form.querySelector('input[type="email"]');
+    const btn   = form.querySelector('button[type="submit"]');
+    const email = input.value.trim();
+    const re    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!re.test(email)) {
       input.setCustomValidity('Please enter a valid email address.');
@@ -168,12 +224,11 @@
     }
     input.setCustomValidity('');
 
-    btn.textContent  = "You're on the list!";
-    btn.disabled     = true;
-    input.disabled   = true;
+    btn.textContent = "You're on the list!";
+    btn.disabled    = true;
+    input.disabled  = true;
     btn.style.cssText = 'background:#16a34a;border-color:#16a34a;cursor:default;';
 
-    // Announce to screen readers
     const msg = document.createElement('p');
     msg.setAttribute('role', 'status');
     msg.setAttribute('aria-live', 'polite');
@@ -184,34 +239,17 @@
 })();
 
 
-/* --- Smooth-scroll for anchor links ----------------------- */
+/* ============================================================
+   SMOOTH SCROLL
+   ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
-    const target = id === '#' ? document.body : document.querySelector(id);
+    if (id === '#') return;
+    const target = document.querySelector(id);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
-
-
-/* --- Nav shrink on scroll --------------------------------- */
-(function initNavScroll() {
-  const nav = document.querySelector('.nav');
-  if (!nav) return;
-  let ticking = false;
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        nav.style.borderBottomColor = window.scrollY > 20
-          ? 'rgba(255,255,255,0.1)'
-          : 'rgba(255,255,255,0.08)';
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-})();

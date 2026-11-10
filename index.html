@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Whale Mentors | Build the Future of Finance</title>
-  <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit. Join the Whale Mentors app waitlist.">
+  <meta name="description" content="Lorem ipsum dolor sit amet consectetur. Join the Whale Mentors app waitlist.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,202 +12,230 @@
 </head>
 <body>
 
-  <!-- Animated cursor-tracking gradient background -->
-  <div class="bg-canvas" aria-hidden="true">
-    <div class="blob blob-blue" id="blobBlue"></div>
-    <div class="blob blob-red" id="blobRed"></div>
+  <!-- ===== ANNOUNCEMENT TICKER ===== -->
+  <div class="ticker-bar" id="tickerBar" role="banner" aria-label="Announcement">
+    <div class="ticker-track" aria-hidden="true">
+      <div class="ticker-inner">
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+        <a class="ticker-item" href="#waitlist">Join the Whale Mentors App waitlist &rarr;</a>
+      </div>
+    </div>
+    <a class="ticker-cta sr-only" href="#waitlist">Join the Whale Mentors App waitlist</a>
+    <button class="ticker-close" id="tickerClose" aria-label="Dismiss announcement">&times;</button>
   </div>
 
-  <!-- Navigation -->
-  <header class="nav" role="banner">
-    <div class="nav__inner container">
-      <a href="/" class="nav__logo" aria-label="Whale Mentors home">
-        <span class="nav__logo-mark">W</span>
-        <span class="nav__logo-text">Whale<br><strong>Mentors</strong></span>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo" aria-label="Whale Mentors home">
+        <span class="navbar__logo-mark" aria-hidden="true">W</span>
+        Whale Mentors
       </a>
-      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">
-        <span></span><span></span><span></span>
-      </button>
-      <nav aria-label="Primary">
-        <ul class="nav__links" id="navLinks" role="list">
-          <li><a href="#build" class="nav__link">Build</a></li>
-          <li><a href="#trade" class="nav__link">Trade</a></li>
-          <li><a href="#token" class="nav__link">WM Token</a></li>
-          <li><a href="#docs" class="nav__link">Docs</a></li>
-        </ul>
+
+      <nav class="navbar__links" aria-label="Primary navigation">
+        <a href="#build" class="navbar__link navbar__link--active">Build</a>
+        <a href="#trade" class="navbar__link">Trade</a>
+        <a href="#token" class="navbar__link">WM Token</a>
+        <a href="#docs"  class="navbar__link">Resources</a>
       </nav>
-      <a href="#waitlist" class="btn btn--primary nav__cta">Join Waitlist</a>
+
+      <div class="navbar__right">
+        <a href="#docs" class="navbar__docs-btn">Docs</a>
+        <button class="navbar__grid-btn" aria-label="Open menu" id="menuBtn">
+          <span class="grid-icon" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </span>
+        </button>
+        <button class="navbar__toggle" aria-label="Toggle mobile menu" aria-expanded="false" id="navToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="navbar__mobile" id="navMobile" hidden>
+      <a href="#build" class="navbar__link">Build</a>
+      <a href="#trade" class="navbar__link">Trade</a>
+      <a href="#token" class="navbar__link">WM Token</a>
+      <a href="#docs"  class="navbar__link">Resources</a>
+      <a href="#docs"  class="btn btn--blue">Docs</a>
     </div>
   </header>
 
   <main>
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="hero" aria-labelledby="hero-heading">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" aria-labelledby="hero-h1">
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
       <div class="container">
-        <div class="hero__content">
-          <h1 class="hero__heading" id="hero-heading">
-            Lorem ipsum dolor.<br>
-            <span class="text-accent">Infinite combinations.</span>
+        <div class="hero__body">
+          <h1 class="hero__heading" id="hero-h1">
+            Lorem ipsum dolor.<br>Infinite combinations.
           </h1>
-          <div class="hero__aside">
-            <p class="hero__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Pellentesque euismod nisi vel consectetur interdum. Snap them
-              together into trading platforms, structured products, or
-              something entirely new.
-            </p>
-            <div class="hero__actions">
-              <a href="#docs" class="btn btn--primary">Explore Docs</a>
-              <a href="#waitlist" class="btn btn--ghost">Join the Whale Mentors app waitlist</a>
-            </div>
+          <p class="hero__sub">
+            Lorem. Ipsum. Dolor. Three primitives, one financial stack.
+          </p>
+          <div class="hero__btns">
+            <a href="#build" class="btn btn--white">Start Building</a>
+            <a href="#trade" class="btn btn--outline">Start Trading</a>
           </div>
         </div>
-        <div class="hero__scroll-hint" aria-hidden="true">
-          <span class="hero__scroll-line"></span>
-          <span class="hero__scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
+
+    <!-- ===== WHY SECTION ===== -->
+    <section class="section why-sec" id="why" aria-labelledby="why-h2">
+      <div class="container">
+        <div class="why-sec__layout">
+          <div class="why-sec__left reveal-child">
+            <p class="eyebrow">Why</p>
+            <h2 class="why-sec__heading" id="why-h2">
+              Why<br>builders<br>choose<br>
+              <span class="text-blue">Whale Mentors</span>
+            </h2>
+          </div>
+          <div class="why-sec__right">
+            <ol class="why-cards" role="list">
+              <li class="why-card reveal-child">
+                <span class="why-card__num" aria-hidden="true">01</span>
+                <h3>Lorem Ipsum Revenue</h3>
+                <p>Lorem ipsum dolor sit amet consectetur. Every trade through your integration generates revenue from day one.</p>
+              </li>
+              <li class="why-card reveal-child">
+                <span class="why-card__num" aria-hidden="true">02</span>
+                <h3>Lorem Ipsum Liquidity</h3>
+                <p>Lorem ipsum dolor sit amet, tap into the deepest layer the moment you integrate. No bootstrapping needed.</p>
+              </li>
+              <li class="why-card reveal-child">
+                <span class="why-card__num" aria-hidden="true">03</span>
+                <h3>Native Composability</h3>
+                <p>Lorem ipsum dolor sit amet, combine primitives in a single transaction. One call, multiple capabilities unlocked.</p>
+              </li>
+              <li class="why-card reveal-child">
+                <span class="why-card__num" aria-hidden="true">04</span>
+                <h3>Lightning Settlement</h3>
+                <p>Lorem ipsum dolor sit amet, ~390ms settlement finality. Transactions at maximum platform speed always.</p>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== WHY ===================== -->
-    <section class="section why" id="why" aria-labelledby="why-heading">
-      <div class="container">
-        <div class="why__header reveal-child">
-          <span class="eyebrow">Why</span>
-          <h2 class="why__heading" id="why-heading">
-            Why<br>builders<br>choose<br>
-            <span class="text-accent">Whale Mentors</span>
-          </h2>
-        </div>
-        <ol class="why__grid" role="list">
-          <li class="why__card reveal-child">
-            <span class="why__number" aria-hidden="true">01</span>
-            <h3 class="why__card-title">Lorem Ipsum Revenue</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Every trade through your integration generates revenue from day one.</p>
-          </li>
-          <li class="why__card reveal-child">
-            <span class="why__number" aria-hidden="true">02</span>
-            <h3 class="why__card-title">Lorem Ipsum Liquidity</h3>
-            <p>Lorem ipsum dolor sit amet, tap into the deepest liquidity layer the moment you integrate. No bootstrapping needed.</p>
-          </li>
-          <li class="why__card reveal-child">
-            <span class="why__number" aria-hidden="true">03</span>
-            <h3 class="why__card-title">Native Composability</h3>
-            <p>Lorem ipsum dolor sit amet, combine primitives in a single transaction. One call, multiple capabilities unlocked instantly.</p>
-          </li>
-          <li class="why__card reveal-child">
-            <span class="why__number" aria-hidden="true">04</span>
-            <h3 class="why__card-title">Lightning Settlement</h3>
-            <p>Lorem ipsum dolor sit amet, ~390ms settlement finality. Transactions processed at maximum platform speed.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
 
-    <!-- ===================== PRIMITIVES / TABS ===================== -->
-    <section class="section primitives" id="trade" aria-labelledby="primitives-heading">
+    <!-- ===== PRIMITIVES / TABS ===== -->
+    <section class="section prim-sec" id="trade" aria-labelledby="prim-h2">
       <div class="container">
-        <h2 class="section-heading reveal-child" id="primitives-heading">
-          Lorem ipsum<br>dolor sit amet<br>consectetur.
+        <p class="eyebrow reveal-child">The Whale Mentors Stack</p>
+        <h2 class="section-heading reveal-child" id="prim-h2">
+          Lorem. Ipsum. Dolor.
         </h2>
+
         <div class="tabs reveal-child" role="tablist" aria-label="Primitive types">
-          <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-spot" id="btn-spot">Lorem</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-margin" id="btn-margin">Ipsum</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-predict" id="btn-predict">Dolor</button>
+          <button class="tab tab--active" role="tab" aria-selected="true"  aria-controls="tab-lorem"  id="btn-lorem">Lorem</button>
+          <button class="tab"             role="tab" aria-selected="false" aria-controls="tab-ipsum"  id="btn-ipsum">Ipsum</button>
+          <button class="tab"             role="tab" aria-selected="false" aria-controls="tab-dolor"  id="btn-dolor">Dolor</button>
         </div>
 
         <div class="tab-panels reveal-child">
-          <!-- Tab: Lorem -->
-          <div class="tab-panel tab-panel--active" id="tab-spot" role="tabpanel" aria-labelledby="btn-spot">
-            <div class="tab-panel__content">
-              <div class="tab-panel__info">
-                <div class="tab-panel__block">
-                  <h3>Lorem ipsum</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod nisi vel consectetur interdum, nisl nisi aliquam eros.</p>
+          <div class="tab-panel tab-panel--active" id="tab-lorem" role="tabpanel" aria-labelledby="btn-lorem">
+            <div class="tab-grid">
+              <div class="tab-info">
+                <div class="tab-block">
+                  <h3 class="tab-block__label">Lorem ipsum</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. The canonical onchain layer. Real order-book depth, not synthetic pricing.</p>
                 </div>
-                <div class="tab-panel__block">
-                  <h3>How it works</h3>
+                <div class="tab-block">
+                  <h3 class="tab-block__label">How it works</h3>
                   <p>Lorem ipsum dolor sit amet consectetur. Liquidity is shared across all markets. No isolated vaults, no bootstrapping. Every order settles atomically in a single transaction.</p>
                 </div>
-                <div class="tab-panel__block">
-                  <h3>What makes it special</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipiscing. The deepest onchain layer in DeFi. Every integration taps the same liquidity pool, so depth compounds as the ecosystem grows.</p>
+                <div class="tab-block">
+                  <h3 class="tab-block__label">What makes it special</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipiscing. The deepest onchain layer in DeFi. Every integration taps the same pool, so depth compounds as the ecosystem grows.</p>
                 </div>
               </div>
-              <div class="tab-panel__visual" aria-hidden="true">
-                <div class="mock-chart">
-                  <div class="mock-chart__bars">
-                    <div class="bar" style="--h:60%"></div>
-                    <div class="bar" style="--h:80%"></div>
-                    <div class="bar" style="--h:45%"></div>
-                    <div class="bar" style="--h:90%"></div>
-                    <div class="bar" style="--h:70%"></div>
-                    <div class="bar" style="--h:55%"></div>
-                    <div class="bar bar--accent" style="--h:95%"></div>
+              <div class="tab-visual" aria-hidden="true">
+                <div class="mock-screen">
+                  <div class="mock-bars">
+                    <div class="mbar" style="--h:60%"></div>
+                    <div class="mbar" style="--h:80%"></div>
+                    <div class="mbar" style="--h:45%"></div>
+                    <div class="mbar" style="--h:90%"></div>
+                    <div class="mbar" style="--h:70%"></div>
+                    <div class="mbar" style="--h:55%"></div>
+                    <div class="mbar mbar--blue" style="--h:95%"></div>
                   </div>
-                  <div class="mock-chart__label">Order Depth</div>
+                  <p class="mock-label">Order Depth</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Tab: Ipsum -->
-          <div class="tab-panel" id="tab-margin" role="tabpanel" aria-labelledby="btn-margin" hidden>
-            <div class="tab-panel__content">
-              <div class="tab-panel__info">
-                <div class="tab-panel__block">
-                  <h3>Lorem ipsum margin</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Shared collateral pool reduces liquidation risk and capital requirements across all integrations.</p>
+          <div class="tab-panel" id="tab-ipsum" role="tabpanel" aria-labelledby="btn-ipsum" hidden>
+            <div class="tab-grid">
+              <div class="tab-info">
+                <div class="tab-block">
+                  <h3 class="tab-block__label">Lorem ipsum margin</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur. Shared collateral pool reduces liquidation risk and capital requirements across all integrations.</p>
                 </div>
-                <div class="tab-panel__block">
-                  <h3>How it works</h3>
+                <div class="tab-block">
+                  <h3 class="tab-block__label">How it works</h3>
                   <p>Lorem ipsum dolor sit amet, leverage is shared across all margin markets. Cross-collateral positions compound yield across the entire ecosystem seamlessly.</p>
                 </div>
-                <div class="tab-panel__block">
-                  <h3>What makes it special</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur, the most capital-efficient margin system available. Automated rebalancing keeps positions healthy without user intervention.</p>
+                <div class="tab-block">
+                  <h3 class="tab-block__label">What makes it special</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipiscing. The most capital-efficient margin system. Automated rebalancing keeps positions healthy without user intervention.</p>
                 </div>
               </div>
-              <div class="tab-panel__visual" aria-hidden="true">
-                <div class="mock-chart">
-                  <div class="mock-chart__candlesticks">
-                    <div class="candle candle--up"></div>
-                    <div class="candle candle--down"></div>
-                    <div class="candle candle--up"></div>
-                    <div class="candle candle--up"></div>
-                    <div class="candle candle--down"></div>
-                    <div class="candle candle--up"></div>
+              <div class="tab-visual" aria-hidden="true">
+                <div class="mock-screen">
+                  <div class="mock-candles">
+                    <div class="mcandle mcandle--up"></div>
+                    <div class="mcandle mcandle--dn"></div>
+                    <div class="mcandle mcandle--up"></div>
+                    <div class="mcandle mcandle--up"></div>
+                    <div class="mcandle mcandle--dn"></div>
+                    <div class="mcandle mcandle--up"></div>
                   </div>
-                  <div class="mock-chart__label">Margin Positions</div>
+                  <p class="mock-label">Margin Positions</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Tab: Dolor -->
-          <div class="tab-panel" id="tab-predict" role="tabpanel" aria-labelledby="btn-predict" hidden>
-            <div class="tab-panel__content">
-              <div class="tab-panel__info">
-                <div class="tab-panel__block">
-                  <h3>Lorem ipsum predict</h3>
+          <div class="tab-panel" id="tab-dolor" role="tabpanel" aria-labelledby="btn-dolor" hidden>
+            <div class="tab-grid">
+              <div class="tab-info">
+                <div class="tab-block">
+                  <h3 class="tab-block__label">Lorem ipsum predict</h3>
                   <p>Lorem ipsum dolor sit amet consectetur adipiscing. Binary outcome markets with deep liquidity settlement and instant resolution on every outcome.</p>
                 </div>
-                <div class="tab-panel__block">
-                  <h3>How it works</h3>
+                <div class="tab-block">
+                  <h3 class="tab-block__label">How it works</h3>
                   <p>Lorem ipsum dolor sit amet consectetur. Each prediction market resolves against the spot layer, enabling instant, oracle-free settlement without third-party dependencies.</p>
                 </div>
-                <div class="tab-panel__block">
-                  <h3>What makes it special</h3>
+                <div class="tab-block">
+                  <h3 class="tab-block__label">What makes it special</h3>
                   <p>Lorem ipsum dolor sit amet consectetur adipiscing. The only prediction market with real-time liquidity access and sub-second settlement finality built in.</p>
                 </div>
               </div>
-              <div class="tab-panel__visual" aria-hidden="true">
-                <div class="mock-chart">
-                  <div class="mock-chart__pie">
-                    <div class="pie-inner">65% Yes</div>
+              <div class="tab-visual" aria-hidden="true">
+                <div class="mock-screen">
+                  <div class="mock-pie">
+                    <div class="mock-pie__inner">65%<br><small>Yes</small></div>
                   </div>
-                  <div class="mock-chart__label">Prediction Markets</div>
+                  <p class="mock-label">Prediction Markets</p>
                 </div>
               </div>
             </div>
@@ -216,141 +244,149 @@
       </div>
     </section>
 
-    <!-- ===================== COMBINATIONS ===================== -->
-    <section class="section combos" id="build" aria-labelledby="combos-heading">
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
+
+    <!-- ===== COMBINATIONS ===== -->
+    <section class="section combo-sec" id="build" aria-labelledby="combo-h2">
       <div class="container">
-        <div class="combos__intro">
-          <h2 class="section-heading reveal-child" id="combos-heading">
-            This is<br>where it<br>gets<br>
-            <span class="text-accent">interesting.</span>
-          </h2>
-          <p class="section-subtext reveal-child">
-            Lorem ipsum dolor sit amet, combine primitives into financial
-            products that don't exist anywhere else.
-          </p>
-        </div>
-        <div class="combos__grid">
+        <h2 class="section-heading reveal-child" id="combo-h2">
+          This is<br>where it<br>gets<br>
+          <span class="text-blue">interesting.</span>
+        </h2>
+        <p class="section-sub reveal-child">
+          Lorem ipsum dolor sit amet, combine primitives into financial products that don't exist anywhere else.
+        </p>
+        <div class="combo-grid">
           <article class="combo-card reveal-child">
-            <div class="combo-card__tags">
-              <span class="tag">Lorem</span>
-              <span class="tag tag--accent">Ipsum</span>
-            </div>
+            <div class="combo-tags"><span class="tag">Lorem</span><span class="tag tag--blue">Ipsum</span></div>
             <h3>Lorem Ipsum Trading</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. A perps-style exchange with real order-book depth and shared collateral without building a matching engine.</p>
+            <p>Lorem ipsum dolor sit amet consectetur. A perps-style exchange with real order-book depth and shared collateral without building a matching engine.</p>
           </article>
           <article class="combo-card reveal-child">
-            <div class="combo-card__tags">
-              <span class="tag">Lorem</span>
-              <span class="tag tag--accent">Dolor</span>
-            </div>
+            <div class="combo-tags"><span class="tag">Lorem</span><span class="tag tag--blue">Dolor</span></div>
             <h3>Lorem Dolor Markets</h3>
             <p>Lorem ipsum dolor sit amet consectetur. A predictions platform where every market settles instantly against the deepest liquidity layer on the network.</p>
           </article>
           <article class="combo-card reveal-child">
-            <div class="combo-card__tags">
-              <span class="tag">Ipsum</span>
-              <span class="tag tag--accent">Dolor</span>
-            </div>
+            <div class="combo-tags"><span class="tag">Ipsum</span><span class="tag tag--blue">Dolor</span></div>
             <h3>Structured Lorem Products</h3>
-            <p>Lorem ipsum dolor sit amet, leveraged binary positions, hedged yield strategies, or structured vaults — all composed from just two primitives.</p>
+            <p>Lorem ipsum dolor sit amet, leveraged binary positions, hedged yield strategies, or structured vaults from just two primitives.</p>
           </article>
           <article class="combo-card reveal-child">
-            <div class="combo-card__tags">
-              <span class="tag">Lorem</span>
-              <span class="tag">Ipsum</span>
-              <span class="tag tag--accent">Dolor</span>
-            </div>
+            <div class="combo-tags"><span class="tag">Lorem</span><span class="tag">Ipsum</span><span class="tag tag--blue">Dolor</span></div>
             <h3>Full-Stack Lorem Finance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing. A complete trading platform with spot, leverage, and derivatives in a single composable transaction.</p>
+            <p>Lorem ipsum dolor sit amet consectetur. A complete trading platform with spot, leverage, and derivatives in a single composable transaction.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== ECOSYSTEM ===================== -->
-    <section class="section ecosystem" id="ecosystem" aria-labelledby="ecosystem-heading">
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
+
+    <!-- ===== ECOSYSTEM ===== -->
+    <section class="section eco-sec" id="ecosystem" aria-labelledby="eco-h2">
       <div class="container">
-        <h2 class="section-heading reveal-child" id="ecosystem-heading">
+        <h2 class="section-heading reveal-child" id="eco-h2">
           Already<br>powering<br>
-          <span class="text-accent">Lorem Finance</span>
+          <span class="text-blue">Lorem Finance</span>
         </h2>
-        <p class="section-subtext reveal-child">
-          Lorem ipsum dolor sit amet consectetur. Meet the teams already
-          earning with Whale Mentors primitives.
+        <p class="section-sub reveal-child">
+          Lorem ipsum dolor sit amet consectetur. Meet the teams already earning with Whale Mentors primitives.
         </p>
-        <div class="ecosystem__grid">
+        <div class="eco-grid">
           <article class="eco-card reveal-child">
             <div class="eco-card__icon" aria-hidden="true">A</div>
-            <h3>Lorem Protocol</h3>
-            <p>Lorem ipsum dolor sit amet, a professional trading terminal with an AI-powered agent for swaps, limit orders, and arbitrage.</p>
+            <div class="eco-card__body">
+              <h3>Lorem Protocol</h3>
+              <p>A professional trading terminal with an AI-powered agent for swaps, limit orders, arbitrage, and margin trading.</p>
+            </div>
           </article>
           <article class="eco-card reveal-child">
             <div class="eco-card__icon" aria-hidden="true">B</div>
-            <h3>Ipsum Exchange</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, an all-in-one platform offering token swaps, liquid staking, and a fully on-chain perpetuals exchange.</p>
+            <div class="eco-card__body">
+              <h3>Ipsum Exchange</h3>
+              <p>An all-in-one trading platform offering token swaps, liquid staking, and a fully on-chain perpetuals exchange.</p>
+            </div>
           </article>
           <article class="eco-card reveal-child">
             <div class="eco-card__icon" aria-hidden="true">C</div>
-            <h3>Dolor Finance</h3>
-            <p>Lorem ipsum dolor sit amet, a high-performance perpetual futures exchange built for professional traders with up to 50x leverage.</p>
+            <div class="eco-card__body">
+              <h3>Dolor Finance</h3>
+              <p>A high-performance perpetual futures exchange built for professional traders, with up to 50x leverage and lightning execution.</p>
+            </div>
           </article>
           <article class="eco-card reveal-child">
             <div class="eco-card__icon" aria-hidden="true">D</div>
-            <h3>Amet Trading</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing, a leading exchange and liquidity hub that gives traders the best prices by routing every swap.</p>
+            <div class="eco-card__body">
+              <h3>Amet Trading</h3>
+              <p>A leading exchange and liquidity hub that gives traders the best prices by routing every swap across the deepest sources.</p>
+            </div>
           </article>
           <article class="eco-card reveal-child">
             <div class="eco-card__icon" aria-hidden="true">E</div>
-            <h3>Consectetur DEX</h3>
-            <p>Lorem ipsum dolor sit amet, a leading open-source order-book exchange offering transparent spot and margin trading with community-driven governance.</p>
+            <div class="eco-card__body">
+              <h3>Consectetur DEX</h3>
+              <p>A leading open-source order-book exchange offering transparent spot and margin trading with community-driven governance.</p>
+            </div>
           </article>
           <article class="eco-card reveal-child">
             <div class="eco-card__icon" aria-hidden="true">F</div>
-            <h3>Adipiscing Hub</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, a one-stop exchange and trading aggregator with deep liquidity, yield farming, and a launchpad for new projects.</p>
+            <div class="eco-card__body">
+              <h3>Adipiscing Hub</h3>
+              <p>A one-stop exchange and trading aggregator with deep liquidity, yield farming, and a launchpad for new projects.</p>
+            </div>
           </article>
+        </div>
+        <div class="eco-ctas reveal-child">
+          <a href="#build" class="btn btn--white">Start Building</a>
+          <a href="#trade" class="btn btn--outline">Start Trading</a>
         </div>
       </div>
     </section>
 
-    <!-- ===================== TESTIMONIALS (NEW) ===================== -->
-    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section testi-sec" id="testimonials" aria-labelledby="testi-h2">
       <div class="container">
-        <span class="eyebrow reveal-child">What builders say</span>
-        <h2 class="section-heading reveal-child" id="testimonials-heading">
+        <p class="eyebrow reveal-child">What builders say</p>
+        <h2 class="section-heading reveal-child" id="testi-h2">
           Lorem ipsum<br>dolor sit amet.
         </h2>
-        <div class="testimonials__grid">
-          <article class="testimonial-card reveal-child">
+        <div class="testi-grid">
+          <article class="testi-card reveal-child">
             <blockquote>
-              <p>"Lorem ipsum dolor sit amet consectetur adipiscing elit. Pellentesque euismod nisi vel consectetur interdum. The primitives clicked immediately — we shipped our integration in a single weekend."</p>
+              <p>"Lorem ipsum dolor sit amet consectetur adipiscing elit. The primitives clicked immediately — we shipped our integration in a single weekend and went live the following Monday."</p>
             </blockquote>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar" aria-hidden="true">JD</div>
+            <footer>
+              <div class="testi-avatar" aria-hidden="true">JD</div>
               <div>
                 <strong>Lorem Ipsum</strong>
                 <span>Founder, Dolor Protocol</span>
               </div>
             </footer>
           </article>
-          <article class="testimonial-card reveal-child">
+          <article class="testi-card reveal-child">
             <blockquote>
-              <p>"Consectetur adipiscing elit pellentesque. Lorem ipsum dolor sit amet, nisi vel consectetur interdum. The deepest liquidity I've ever integrated with — built our entire product on top of it."</p>
+              <p>"Consectetur adipiscing elit pellentesque. Lorem ipsum dolor sit amet, nisi vel consectetur interdum. The deepest liquidity I've ever integrated — built our entire product on top of it."</p>
             </blockquote>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar" aria-hidden="true">AS</div>
+            <footer>
+              <div class="testi-avatar" aria-hidden="true">AS</div>
               <div>
                 <strong>Amet Sit</strong>
                 <span>CTO, Ipsum Exchange</span>
               </div>
             </footer>
           </article>
-          <article class="testimonial-card reveal-child">
+          <article class="testi-card reveal-child">
             <blockquote>
-              <p>"Lorem ipsum dolor sit amet. Pellentesque euismod nisi vel consectetur. We went from zero to live integration in a single sprint — the SDKs are that good."</p>
+              <p>"Lorem ipsum dolor sit amet. Pellentesque euismod nisi vel consectetur. We went from zero to live integration in a single sprint — the SDKs are that good. Highly recommended."</p>
             </blockquote>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar" aria-hidden="true">NE</div>
+            <footer>
+              <div class="testi-avatar" aria-hidden="true">NE</div>
               <div>
                 <strong>Nisi Euismod</strong>
                 <span>Lead Engineer, Adipiscing Labs</span>
@@ -361,113 +397,104 @@
       </div>
     </section>
 
-    <!-- ===================== RESOURCES ===================== -->
-    <section class="section resources" id="docs" aria-labelledby="resources-heading">
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
+
+    <!-- ===== RESOURCES ===== -->
+    <section class="section res-sec" id="docs" aria-labelledby="res-h2">
       <div class="container">
-        <h2 class="section-heading reveal-child" id="resources-heading">
+        <h2 class="section-heading reveal-child" id="res-h2">
           Everything<br>you need<br>to start<br>
-          <span class="text-accent">building</span>
+          <span class="text-blue">building</span>
         </h2>
-        <div class="resources__grid">
-          <article class="resource-card reveal-child">
-            <span class="resource-card__number" aria-hidden="true">Docs</span>
-            <div>
-              <span class="resource-card__sub" aria-hidden="true">01</span>
-              <h3>Lorem Ipsum SDKs</h3>
-              <p>Lorem ipsum and dolor SDKs. Get to your first integration fast with our type-safe, fully documented libraries.</p>
-            </div>
-            <a href="#" class="resource-card__link" aria-label="View Lorem Ipsum SDKs">View SDKs →</a>
+        <div class="res-grid">
+          <article class="res-card reveal-child">
+            <span class="res-tag">Docs</span>
+            <span class="res-num" aria-hidden="true">01</span>
+            <h3>Lorem Ipsum SDKs</h3>
+            <p>Lorem ipsum and dolor SDKs. Get to your first integration fast with our type-safe, fully documented libraries.</p>
+            <a href="#" class="res-link" aria-label="View Lorem Ipsum SDKs">View SDKs &rarr;</a>
           </article>
-          <article class="resource-card reveal-child">
-            <span class="resource-card__number" aria-hidden="true">Docs</span>
-            <div>
-              <span class="resource-card__sub" aria-hidden="true">02</span>
-              <h3>Lorem Ipsum Guides</h3>
-              <p>Integration guides, API reference, and architecture overview for all Whale Mentors primitives and composable patterns.</p>
-            </div>
-            <a href="#" class="resource-card__link" aria-label="Read Lorem Ipsum Guides">Read docs →</a>
+          <article class="res-card reveal-child">
+            <span class="res-tag">Docs</span>
+            <span class="res-num" aria-hidden="true">02</span>
+            <h3>Lorem Ipsum Guides</h3>
+            <p>Integration guides, API reference, and architecture overview for all Whale Mentors primitives and composable patterns.</p>
+            <a href="#" class="res-link" aria-label="Read Lorem Ipsum Guides">Read docs &rarr;</a>
           </article>
-          <article class="resource-card reveal-child">
-            <span class="resource-card__number" aria-hidden="true">Docs</span>
-            <div>
-              <span class="resource-card__sub" aria-hidden="true">03</span>
-              <h3>Ipsum Audits</h3>
-              <p>Lorem ipsum dolor sit amet, full audit reports for every primitive. Security first — all contracts independently verified.</p>
-            </div>
-            <a href="#" class="resource-card__link" aria-label="Read Ipsum Audits">Read audits →</a>
+          <article class="res-card reveal-child">
+            <span class="res-tag">Docs</span>
+            <span class="res-num" aria-hidden="true">03</span>
+            <h3>Smart Contract Audits</h3>
+            <p>Lorem ipsum dolor sit amet, full audit reports for every primitive. Security first — all contracts independently verified.</p>
+            <a href="#" class="res-link" aria-label="Read Smart Contract Audits">Read audits &rarr;</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== WAITLIST / CTA ===================== -->
-    <section class="section waitlist" id="waitlist" aria-labelledby="waitlist-heading">
+    <!-- DIVIDER -->
+    <div class="sdivider" aria-hidden="true"><span class="sdivider__dot"></span></div>
+
+    <!-- ===== WAITLIST / CTA ===== -->
+    <section class="section wl-sec" id="waitlist" aria-labelledby="wl-h2">
       <div class="container">
-        <div class="waitlist__inner">
-          <h2 class="waitlist__heading reveal-child" id="waitlist-heading">
-            Join the Whale Mentors<br>
-            <span class="text-accent">app waitlist</span>
+        <div class="wl-inner">
+          <h2 class="wl-heading reveal-child" id="wl-h2">
+            Lorem ipsum dolor<br>sit amet consectetur
           </h2>
-          <p class="waitlist__subtext reveal-child">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit. Be first to
-            build on the future of composable finance.
+          <p class="wl-sub reveal-child">
+            Join the Whale Mentors app waitlist. Be first to build on the future of composable finance.
           </p>
-          <form class="waitlist__form reveal-child" novalidate aria-label="Waitlist signup">
-            <div class="waitlist__form-group">
-              <label for="email" class="sr-only">Email address</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="your@email.com"
-                class="waitlist__input"
-                autocomplete="email"
-                required
-                aria-required="true"
-              >
-              <button type="submit" class="btn btn--primary waitlist__submit">Join Waitlist</button>
+          <form class="wl-form reveal-child" novalidate aria-label="Waitlist signup">
+            <div class="wl-form__row">
+              <label for="wl-email" class="sr-only">Email address</label>
+              <input type="email" id="wl-email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true">
+              <button type="submit" class="btn btn--blue">Join Waitlist</button>
             </div>
-            <p class="waitlist__disclaimer" role="note">
-              Lorem ipsum dolor sit amet. No spam, unsubscribe anytime.
-            </p>
+            <p class="wl-form__note">Lorem ipsum. No spam, unsubscribe anytime.</p>
           </form>
+          <div class="wl-btns reveal-child">
+            <a href="#build" class="btn btn--white">Start Building</a>
+            <a href="#trade" class="btn btn--outline">Start Trading</a>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="/" class="nav__logo" aria-label="Whale Mentors home">
-            <span class="nav__logo-mark">W</span>
-            <span class="nav__logo-text">Whale<br><strong>Mentors</strong></span>
+          <a href="/" class="footer__logo" aria-label="Whale Mentors">
+            <span class="navbar__logo-mark" aria-hidden="true">W</span>
+            Whale Mentors
           </a>
           <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Build the future of composable finance.</p>
         </div>
-        <nav class="footer__nav" aria-label="Footer">
-          <div class="footer__nav-col">
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <div class="footer__col">
             <h3>Build</h3>
-            <ul role="list">
+            <ul>
               <li><a href="#">Lorem Ipsum</a></li>
               <li><a href="#">Dolor Sit</a></li>
               <li><a href="#">Amet Docs</a></li>
             </ul>
           </div>
-          <div class="footer__nav-col">
+          <div class="footer__col">
             <h3>Community</h3>
-            <ul role="list">
+            <ul>
               <li><a href="#">Lorem Discord</a></li>
               <li><a href="#">Ipsum Twitter</a></li>
               <li><a href="#">Dolor Forum</a></li>
             </ul>
           </div>
-          <div class="footer__nav-col">
+          <div class="footer__col">
             <h3>Company</h3>
-            <ul role="list">
+            <ul>
               <li><a href="#">Lorem About</a></li>
               <li><a href="#">Ipsum Blog</a></li>
               <li><a href="#">Dolor Careers</a></li>
@@ -478,15 +505,9 @@
       <div class="footer__bottom">
         <p>&copy; 2024 Whale Mentors. Lorem ipsum dolor sit amet.</p>
         <div class="footer__socials">
-          <a href="#" aria-label="X / Twitter">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" aria-label="Discord">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.044.028.055A19.9 19.9 0 0 0 5.993 21.02a.079.079 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 5.878-2.957.076.076 0 0 0 .028-.056c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          </a>
-          <a href="#" aria-label="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          </a>
+          <a href="#" aria-label="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="Discord"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.044.028.055A19.9 19.9 0 0 0 5.993 21.02a.079.079 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 5.878-2.957.076.076 0 0 0 .028-.056c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
         </div>
       </div>
     </div>
