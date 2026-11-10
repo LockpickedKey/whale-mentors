@@ -48,68 +48,74 @@
 
 
 /* ============================================================
-   HERO CANVAS — grid of pulsing dots
+   HERO CANVAS — DeepBook-style falling bars with wave
    ============================================================ */
 (function initCanvas() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const ctx     = canvas.getContext('2d');
-  const SPACING = 40;
-  const BLUE    = [30, 110, 243];
+  const ctx = canvas.getContext('2d');
+  const COL_SPACING = 13;
+  const BAR_W       = 2;
 
-  let W, H, cols, rows, dots;
-  let mouse = { x: -9999, y: -9999 };
+  let W, H, bars = [];
 
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-    cols = Math.ceil(W / SPACING) + 1;
-    rows = Math.ceil(H / SPACING) + 1;
-    dots = [];
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        dots.push({
-          x:     c * SPACING,
-          y:     r * SPACING,
-          phase: Math.random() * Math.PI * 2,
-          speed: 0.4 + Math.random() * 0.4,
+  function buildBars() {
+    bars = [];
+    const numCols = Math.ceil(W / COL_SPACING) + 2;
+    for (let col = 0; col < numCols; col++) {
+      const x     = col * COL_SPACING;
+      const count = 4 + Math.floor(Math.random() * 4);
+      for (let k = 0; k < count; k++) {
+        bars.push({
+          x,
+          y:     (H / count) * k + Math.random() * (H / count),
+          h:     10 + Math.random() * 50,
+          spd:   25 + Math.random() * 55,
+          alpha: 0.07 + Math.random() * 0.2,
+          blue:  Math.random() < 0.07,
+          phase: col * 0.16 + Math.random() * 0.3,
         });
       }
     }
   }
 
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    buildBars();
+  }
+
   window.addEventListener('resize', resize);
   resize();
 
-  window.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
+  let prev = 0, t = 0;
 
-  let t = 0;
-  function draw() {
+  function draw(ts) {
+    const dt = prev ? Math.min((ts - prev) / 1000, 0.05) : 0;
+    prev = ts;
+    t += dt;
+
     ctx.clearRect(0, 0, W, H);
-    t += 0.016;
-    for (const dot of dots) {
-      const pulse = (Math.sin(t * dot.speed + dot.phase) + 1) / 2;
-      const dx    = dot.x - mouse.x;
-      const dy    = dot.y - mouse.y;
-      const dist  = Math.sqrt(dx * dx + dy * dy);
-      const prox  = Math.max(0, 1 - dist / 160);
-      const alpha = 0.08 + pulse * 0.1 + prox * 0.55;
-      const r2    = 1.5 + prox * 2;
-      ctx.beginPath();
-      ctx.arc(dot.x, dot.y, r2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${alpha})`;
-      ctx.fill();
+
+    for (const b of bars) {
+      b.y = (b.y + b.spd * dt + H) % H;
+
+      const waveOff = Math.sin(b.phase - t * 0.65) * H * 0.22;
+      const ry      = b.y + waveOff;
+
+      if (ry + b.h < 0 || ry > H) continue;
+
+      const [r, g, bv] = b.blue ? [30, 110, 243] : [160, 175, 200];
+      ctx.fillStyle = `rgba(${r},${g},${bv},${b.alpha})`;
+      ctx.fillRect(b.x, ry, BAR_W, b.h);
     }
+
     requestAnimationFrame(draw);
   }
 
-  draw();
+  requestAnimationFrame(draw);
 })();
 
 
