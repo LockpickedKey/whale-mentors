@@ -64,8 +64,8 @@
     minWidth: 200,
     backgroundColor: 0x000000,
     baseColor: 0x1E6EF3,
-    amplitudeFactor: 1.8,
-    size: 1.8,
+    amplitudeFactor: 0.5,
+    size: 1.4,
     xOffset: 0.0,
     yOffset: 0.1,
   });
