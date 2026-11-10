@@ -48,82 +48,27 @@
 
 
 /* ============================================================
-   HERO CANVAS — falling bars with sine wave (DeepBook style)
+   HERO — Vanta.js Halo background
    ============================================================ */
-(function initCanvas() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
+(function initVanta() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const hero = document.getElementById('hero');
+  if (!hero || !window.VANTA) return;
 
-  const ctx = canvas.getContext('2d');
-
-  /* Tuning — increase these to make bars more visible */
-  const COL_SPACING = 12;   /* px between columns */
-  const BAR_W       = 3;    /* bar width px */
-  const BARS_PER_COL = 6;   /* bars per column */
-  const ALPHA_MIN   = 0.18; /* min opacity */
-  const ALPHA_MAX   = 0.55; /* max opacity */
-  const BLUE_CHANCE = 0.08; /* fraction of bars that are blue */
-
-  let W, H, bars = [];
-
-  function buildBars() {
-    bars = [];
-    const numCols = Math.ceil(W / COL_SPACING) + 2;
-    for (let col = 0; col < numCols; col++) {
-      const x = col * COL_SPACING;
-      for (let k = 0; k < BARS_PER_COL; k++) {
-        bars.push({
-          x,
-          y:     (H / BARS_PER_COL) * k + Math.random() * (H / BARS_PER_COL),
-          h:     12 + Math.random() * 55,
-          spd:   30 + Math.random() * 60,
-          alpha: ALPHA_MIN + Math.random() * (ALPHA_MAX - ALPHA_MIN),
-          blue:  Math.random() < BLUE_CHANCE,
-          phase: col * 0.18,
-        });
-      }
-    }
-  }
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-    buildBars();
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-
-  let prev = 0, t = 0;
-
-  function draw(ts) {
-    const dt = prev ? Math.min((ts - prev) / 1000, 0.05) : 0.016;
-    prev = ts;
-    t += dt;
-
-    ctx.clearRect(0, 0, W, H);
-
-    for (const b of bars) {
-      /* fall downward, wrap at bottom */
-      b.y += b.spd * dt;
-      if (b.y > H + b.h) b.y -= H + b.h;
-
-      /* sine wave displaces Y */
-      const waveOff = Math.sin(b.phase - t * 0.6) * H * 0.2;
-      const ry = b.y + waveOff;
-
-      if (ry + b.h < 0 || ry > H) continue;
-
-      const [r, g, bv] = b.blue ? [30, 110, 243] : [170, 185, 210];
-      ctx.fillStyle = `rgba(${r},${g},${bv},${b.alpha})`;
-      ctx.fillRect(b.x, ry, BAR_W, b.h);
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  requestAnimationFrame(draw);
+  VANTA.HALO({
+    el: hero,
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200,
+    minWidth: 200,
+    backgroundColor: 0x000000,
+    baseColor: 0x1E6EF3,
+    amplitudeFactor: 1.8,
+    size: 1.8,
+    xOffset: 0.0,
+    yOffset: 0.1,
+  });
 })();
 
 
@@ -187,6 +132,26 @@
       }
     });
   });
+})();
+
+
+/* ============================================================
+   DIVIDER CUBE SCROLL ANIMATION
+   ============================================================ */
+(function initDividers() {
+  const dividers = document.querySelectorAll('.sdivider');
+  if (!dividers.length) return;
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  dividers.forEach(d => obs.observe(d));
 })();
 
 
