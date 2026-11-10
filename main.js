@@ -48,26 +48,27 @@
 
 
 /* ============================================================
-   HERO — Vanta.js Halo background
+   HERO — Vanta.js Waves background (watery)
    ============================================================ */
 (function initVanta() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const hero = document.getElementById('hero');
   if (!hero || !window.VANTA) return;
 
-  VANTA.HALO({
+  VANTA.WAVES({
     el: hero,
     mouseControls: true,
     touchControls: true,
     gyroControls: false,
     minHeight: 200,
     minWidth: 200,
-    backgroundColor: 0x000000,
-    baseColor: 0x1E6EF3,
-    amplitudeFactor: 0.5,
-    size: 1.4,
-    xOffset: 0.0,
-    yOffset: 0.1,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: 0x05215e,
+    shininess: 20,
+    waveHeight: 14,
+    waveSpeed: 0.55,
+    zoom: 0.85,
   });
 })();
 
