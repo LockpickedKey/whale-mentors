@@ -15,11 +15,9 @@
      NAVBAR
      ══════════════════════════════════════════ -->
 <div id="navbar" class="navbar">
-
-  <!-- STATIC PENCIL / TICKER BAR -->
   <div id="tickerBar" class="pencil">
     <div class="pencil__inner">
-      <a href="#waitlist" class="pencil__link">Join the Whale Mentors App waitlist &rarr;</a>
+      <a href="#download" class="pencil__link">Join the Whale Mentors App waitlist &rarr;</a>
     </div>
     <button id="tickerClose" class="pencil__close" aria-label="Close announcement">
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -28,23 +26,20 @@
     </button>
   </div>
 
-  <!-- MAIN NAV -->
   <div class="nav-bar">
     <div class="nav-bar__inner">
       <a href="/" class="nav-logo" aria-label="Whale Mentors home">
         <div class="nav-logo__mark">W</div>
         <span class="nav-logo__name">Whale Mentors</span>
       </a>
-
       <nav class="nav-links" aria-label="Main">
-        <a href="#build"     class="nav-link">Build</a>
-        <a href="#trade"     class="nav-link">Trade</a>
-        <a href="#token"     class="nav-link">WM Token</a>
-        <a href="#resources" class="nav-link">Resources</a>
+        <a href="#carousel"      class="nav-link">Lorem ipsum</a>
+        <a href="#pricing"       class="nav-link">Pricing</a>
+        <a href="#download"      class="nav-link">Download</a>
+        <a href="#faq"           class="nav-link">FAQ</a>
       </nav>
-
       <div class="nav-actions">
-        <a href="#waitlist" class="btn btn--blue btn--sm">Download</a>
+        <a href="#download" class="btn btn--blue btn--sm">Download</a>
         <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
           <span class="nav-toggle__grid" aria-hidden="true">
             <span></span><span></span><span></span><span></span>
@@ -52,29 +47,28 @@
         </button>
       </div>
     </div>
-
     <div id="navMobile" class="nav-mobile" hidden>
-      <a href="#build"     class="nav-mobile__link">Build</a>
-      <a href="#trade"     class="nav-mobile__link">Trade</a>
-      <a href="#token"     class="nav-mobile__link">WM Token</a>
-      <a href="#resources" class="nav-mobile__link">Resources</a>
-      <a href="#waitlist"  class="btn btn--blue nav-mobile__cta">Download</a>
+      <a href="#carousel"  class="nav-mobile__link">Lorem ipsum</a>
+      <a href="#pricing"   class="nav-mobile__link">Pricing</a>
+      <a href="#download"  class="nav-mobile__link">Download</a>
+      <a href="#faq"       class="nav-mobile__link">FAQ</a>
+      <a href="#download"  class="btn btn--blue nav-mobile__cta">Download</a>
     </div>
   </div>
 </div>
 
 
 <!-- ══════════════════════════════════════════
-     HERO — no reveal-child so it's always visible
+     HERO
      ══════════════════════════════════════════ -->
 <section id="hero" class="hero snap-start">
   <canvas id="heroCanvas" class="hero__canvas" aria-hidden="true"></canvas>
   <div class="container hero__content">
-    <h1 class="hero__heading">Lorem ipsum</h1>
+    <h1 class="hero__heading">Whale Mentors</h1>
     <p class="hero__sub">Lorem ipsum</p>
     <div class="hero__ctas">
-      <a href="#waitlist" class="btn btn--blue">Lorem ipsum</a>
-      <a href="#build"    class="btn btn--ghost">Lorem ipsum</a>
+      <a href="#download" class="btn btn--blue">Lorem ipsum</a>
+      <a href="#pricing"  class="btn btn--ghost">Lorem ipsum</a>
     </div>
   </div>
 </section>
@@ -85,45 +79,94 @@
 
 
 <!-- ══════════════════════════════════════════
-     BUILD
+     CAROUSEL
      ══════════════════════════════════════════ -->
-<section id="build" class="section snap-start">
+<section id="carousel" class="section section--carousel snap-start">
   <div class="container">
     <div class="section__eyebrow reveal-child">Lorem ipsum</div>
+    <h2 class="section__heading reveal-child">Lorem ipsum</h2>
+  </div>
+
+  <div class="carousel reveal-child">
+    <div class="carousel__track" id="carouselTrack">
+      <div class="carousel__img"><span>01</span></div>
+      <div class="carousel__img"><span>02</span></div>
+      <div class="carousel__img"><span>03</span></div>
+      <div class="carousel__img"><span>04</span></div>
+      <div class="carousel__img"><span>05</span></div>
+      <div class="carousel__img"><span>06</span></div>
+      <div class="carousel__img"><span>07</span></div>
+      <div class="carousel__img"><span>08</span></div>
+      <!-- duplicates for seamless loop -->
+      <div class="carousel__img" aria-hidden="true"><span>01</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>02</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>03</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>04</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>05</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>06</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>07</span></div>
+      <div class="carousel__img" aria-hidden="true"><span>08</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── DIVIDER ── -->
+<div class="sdivider"><span class="sdivider__cube"></span><div class="sdivider__line"></div><span class="sdivider__cube"></span></div>
+
+
+<!-- ══════════════════════════════════════════
+     PRICING
+     ══════════════════════════════════════════ -->
+<section id="pricing" class="section snap-start">
+  <div class="container">
+    <div class="section__eyebrow reveal-child">Pricing</div>
     <h2 class="section__heading reveal-child">Lorem ipsum</h2>
     <p class="section__sub reveal-child">Lorem ipsum</p>
 
-    <div class="card-grid">
-      <div class="card reveal-child">
-        <div class="card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#1E6EF3" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="#1E6EF3" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="#1E6EF3" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
+    <div class="pricing-grid">
+
+      <!-- Normal plan -->
+      <div class="plan reveal-child">
+        <div class="plan__header">
+          <div class="plan__name">Whale Mentors</div>
+          <div class="plan__price">
+            <span class="plan__amount">Lorem ipsum</span>
+            <span class="plan__period">/ Lorem ipsum</span>
+          </div>
+          <p class="plan__desc">Lorem ipsum</p>
         </div>
-        <h3 class="card__title">Lorem ipsum</h3>
-        <p class="card__body">Lorem ipsum</p>
+        <ul class="plan__features">
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+        </ul>
+        <a href="#download" class="btn btn--ghost plan__cta">Lorem ipsum</a>
       </div>
-      <div class="card reveal-child">
-        <div class="card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M22 12H18L15 21L9 3L6 12H2" stroke="#1E6EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+
+      <!-- Prestige plan -->
+      <div class="plan plan--prestige reveal-child">
+        <div class="plan__badge">Most Popular</div>
+        <div class="plan__header">
+          <div class="plan__name">Whale Mentors Prestige</div>
+          <div class="plan__price">
+            <span class="plan__amount">Lorem ipsum</span>
+            <span class="plan__period">/ Lorem ipsum</span>
+          </div>
+          <p class="plan__desc">Lorem ipsum</p>
         </div>
-        <h3 class="card__title">Lorem ipsum</h3>
-        <p class="card__body">Lorem ipsum</p>
+        <ul class="plan__features">
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+          <li><span class="plan__check">&#10003;</span>Lorem ipsum</li>
+        </ul>
+        <a href="#download" class="btn btn--blue plan__cta">Lorem ipsum</a>
       </div>
-      <div class="card reveal-child">
-        <div class="card__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="#1E6EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="#1E6EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3 class="card__title">Lorem ipsum</h3>
-        <p class="card__body">Lorem ipsum</p>
-      </div>
+
     </div>
   </div>
 </section>
@@ -134,201 +177,48 @@
 
 
 <!-- ══════════════════════════════════════════
-     TRADE / PLATFORM
+     TESTIMONIALS (placeholder)
      ══════════════════════════════════════════ -->
-<section id="trade" class="section snap-start">
+<section id="testimonials" class="section snap-start">
   <div class="container">
-    <div class="section__eyebrow reveal-child">Lorem ipsum</div>
+    <div class="section__eyebrow reveal-child">Testimonials</div>
     <h2 class="section__heading reveal-child">Lorem ipsum</h2>
+    <div class="testi-placeholder reveal-child">
+      <p>Lorem ipsum</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── DIVIDER ── -->
+<div class="sdivider"><span class="sdivider__cube"></span><div class="sdivider__line"></div><span class="sdivider__cube"></span></div>
+
+
+<!-- ══════════════════════════════════════════
+     DOWNLOAD
+     ══════════════════════════════════════════ -->
+<section id="download" class="section section--cta snap-start">
+  <div class="container">
+    <h2 class="section__heading reveal-child">Lorem ipsum<br><span class="text-blue">Whale Mentors</span></h2>
     <p class="section__sub reveal-child">Lorem ipsum</p>
-
-    <div class="tabs reveal-child" role="tablist" aria-label="Platform features">
-      <button class="tab tab--active" role="tab" aria-selected="true"  aria-controls="tab-1" id="tabBtn-1">Lorem ipsum</button>
-      <button class="tab"             role="tab" aria-selected="false" aria-controls="tab-2" id="tabBtn-2">Lorem ipsum</button>
-      <button class="tab"             role="tab" aria-selected="false" aria-controls="tab-3" id="tabBtn-3">Lorem ipsum</button>
-      <button class="tab"             role="tab" aria-selected="false" aria-controls="tab-4" id="tabBtn-4">Lorem ipsum</button>
+    <div class="download-btns reveal-child">
+      <a href="#" class="btn btn--blue download-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 17L7 12L8.4 10.55L11 13.15V7H13V13.15L15.6 10.55L17 12L12 17ZM7 21C6.45 21 5.979 20.804 5.587 20.412C5.195 20.02 4.999 19.549 5 19V16H7V19H17V16H19V19C19 19.55 18.804 20.021 18.412 20.413C18.02 20.805 17.549 21.001 17 21H7Z" fill="currentColor"/>
+        </svg>
+        Download for iOS
+      </a>
+      <a href="#" class="btn btn--ghost download-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 17L7 12L8.4 10.55L11 13.15V7H13V13.15L15.6 10.55L17 12L12 17ZM7 21C6.45 21 5.979 20.804 5.587 20.412C5.195 20.02 4.999 19.549 5 19V16H7V19H17V16H19V19C19 19.55 18.804 20.021 18.412 20.413C18.02 20.805 17.549 21.001 17 21H7Z" fill="currentColor"/>
+        </svg>
+        Download for Android
+      </a>
     </div>
-
-    <div id="tab-1" class="tab-panel tab-panel--active" role="tabpanel" aria-labelledby="tabBtn-1">
-      <div class="tab-panel__inner">
-        <div class="tab-panel__text">
-          <h3>Lorem ipsum</h3>
-          <p>Lorem ipsum</p>
-          <a href="#waitlist" class="btn btn--blue btn--sm" style="margin-top:1.5rem">Lorem ipsum</a>
-        </div>
-        <div class="tab-panel__visual">
-          <div class="mock-chart">
-            <div class="mock-chart__bar" style="height:60%"></div>
-            <div class="mock-chart__bar" style="height:80%"></div>
-            <div class="mock-chart__bar" style="height:45%"></div>
-            <div class="mock-chart__bar" style="height:90%"></div>
-            <div class="mock-chart__bar" style="height:70%"></div>
-            <div class="mock-chart__bar" style="height:55%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="tab-2" class="tab-panel" role="tabpanel" aria-labelledby="tabBtn-2" hidden>
-      <div class="tab-panel__inner">
-        <div class="tab-panel__text">
-          <h3>Lorem ipsum</h3>
-          <p>Lorem ipsum</p>
-          <a href="#waitlist" class="btn btn--blue btn--sm" style="margin-top:1.5rem">Lorem ipsum</a>
-        </div>
-        <div class="tab-panel__visual">
-          <div class="mock-chart">
-            <div class="mock-chart__bar" style="height:40%"></div>
-            <div class="mock-chart__bar" style="height:70%"></div>
-            <div class="mock-chart__bar" style="height:85%"></div>
-            <div class="mock-chart__bar" style="height:60%"></div>
-            <div class="mock-chart__bar" style="height:75%"></div>
-            <div class="mock-chart__bar" style="height:50%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="tab-3" class="tab-panel" role="tabpanel" aria-labelledby="tabBtn-3" hidden>
-      <div class="tab-panel__inner">
-        <div class="tab-panel__text">
-          <h3>Lorem ipsum</h3>
-          <p>Lorem ipsum</p>
-          <a href="#waitlist" class="btn btn--blue btn--sm" style="margin-top:1.5rem">Lorem ipsum</a>
-        </div>
-        <div class="tab-panel__visual">
-          <div class="mock-chart">
-            <div class="mock-chart__bar" style="height:75%"></div>
-            <div class="mock-chart__bar" style="height:50%"></div>
-            <div class="mock-chart__bar" style="height:65%"></div>
-            <div class="mock-chart__bar" style="height:40%"></div>
-            <div class="mock-chart__bar" style="height:80%"></div>
-            <div class="mock-chart__bar" style="height:60%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="tab-4" class="tab-panel" role="tabpanel" aria-labelledby="tabBtn-4" hidden>
-      <div class="tab-panel__inner">
-        <div class="tab-panel__text">
-          <h3>Lorem ipsum</h3>
-          <p>Lorem ipsum</p>
-          <a href="#waitlist" class="btn btn--blue btn--sm" style="margin-top:1.5rem">Lorem ipsum</a>
-        </div>
-        <div class="tab-panel__visual">
-          <div class="mock-chart">
-            <div class="mock-chart__bar" style="height:55%"></div>
-            <div class="mock-chart__bar" style="height:85%"></div>
-            <div class="mock-chart__bar" style="height:40%"></div>
-            <div class="mock-chart__bar" style="height:70%"></div>
-            <div class="mock-chart__bar" style="height:60%"></div>
-            <div class="mock-chart__bar" style="height:90%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ── DIVIDER ── -->
-<div class="sdivider"><span class="sdivider__cube"></span><div class="sdivider__line"></div><span class="sdivider__cube"></span></div>
-
-
-<!-- ══════════════════════════════════════════
-     WM TOKEN
-     ══════════════════════════════════════════ -->
-<section id="token" class="section snap-start">
-  <div class="container">
-    <div class="section__eyebrow reveal-child">Lorem ipsum</div>
-    <h2 class="section__heading reveal-child">Lorem ipsum</h2>
-    <p class="section__sub reveal-child">Lorem ipsum</p>
-    <div class="feature-grid">
-      <div class="feature reveal-child">
-        <div class="feature__label">Lorem ipsum</div>
-        <div class="feature__value">Lorem ipsum</div>
-      </div>
-      <div class="feature reveal-child">
-        <div class="feature__label">Lorem ipsum</div>
-        <div class="feature__value">Lorem ipsum</div>
-      </div>
-      <div class="feature reveal-child">
-        <div class="feature__label">Lorem ipsum</div>
-        <div class="feature__value">Lorem ipsum</div>
-      </div>
-      <div class="feature reveal-child">
-        <div class="feature__label">Lorem ipsum</div>
-        <div class="feature__value">Lorem ipsum</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ── DIVIDER ── -->
-<div class="sdivider"><span class="sdivider__cube"></span><div class="sdivider__line"></div><span class="sdivider__cube"></span></div>
-
-
-<!-- ══════════════════════════════════════════
-     ECOSYSTEM
-     ══════════════════════════════════════════ -->
-<section id="resources" class="section snap-start">
-  <div class="container">
-    <div class="section__eyebrow reveal-child">Lorem ipsum</div>
-    <h2 class="section__heading reveal-child">Lorem ipsum</h2>
-    <div class="eco-grid">
-      <div class="eco-logo reveal-child"><div class="eco-logo__inner">Lorem ipsum</div></div>
-      <div class="eco-logo reveal-child"><div class="eco-logo__inner">Lorem ipsum</div></div>
-      <div class="eco-logo reveal-child"><div class="eco-logo__inner">Lorem ipsum</div></div>
-      <div class="eco-logo reveal-child"><div class="eco-logo__inner">Lorem ipsum</div></div>
-      <div class="eco-logo reveal-child"><div class="eco-logo__inner">Lorem ipsum</div></div>
-      <div class="eco-logo reveal-child"><div class="eco-logo__inner">Lorem ipsum</div></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ── DIVIDER ── -->
-<div class="sdivider"><span class="sdivider__cube"></span><div class="sdivider__line"></div><span class="sdivider__cube"></span></div>
-
-
-<!-- ══════════════════════════════════════════
-     TESTIMONIALS
-     ══════════════════════════════════════════ -->
-<section class="section snap-start">
-  <div class="container">
-    <div class="section__eyebrow reveal-child">Lorem ipsum</div>
-    <h2 class="section__heading reveal-child">Lorem ipsum</h2>
-    <div class="testi-grid">
-      <div class="testi reveal-child">
-        <p class="testi__quote">"Lorem ipsum"</p>
-        <div class="testi__author">
-          <div class="testi__avatar"></div>
-          <div>
-            <div class="testi__name">Lorem ipsum</div>
-            <div class="testi__role">Lorem ipsum</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi reveal-child">
-        <p class="testi__quote">"Lorem ipsum"</p>
-        <div class="testi__author">
-          <div class="testi__avatar"></div>
-          <div>
-            <div class="testi__name">Lorem ipsum</div>
-            <div class="testi__role">Lorem ipsum</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi reveal-child">
-        <p class="testi__quote">"Lorem ipsum"</p>
-        <div class="testi__author">
-          <div class="testi__avatar"></div>
-          <div>
-            <div class="testi__name">Lorem ipsum</div>
-            <div class="testi__role">Lorem ipsum</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form class="wl-form reveal-child" novalidate>
+      <input type="email" placeholder="Lorem ipsum" aria-label="Email address" required>
+      <button type="submit" class="btn btn--blue">Lorem ipsum</button>
+    </form>
   </div>
 </section>
 
@@ -342,7 +232,7 @@
      ══════════════════════════════════════════ -->
 <section id="faq" class="section snap-start">
   <div class="container container--narrow">
-    <div class="section__eyebrow reveal-child">Lorem ipsum</div>
+    <div class="section__eyebrow reveal-child">FAQ</div>
     <h2 class="section__heading reveal-child">Lorem ipsum</h2>
 
     <div class="faq reveal-child">
@@ -371,25 +261,6 @@
         <div class="faq__a" hidden><p>Lorem ipsum</p></div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- ── DIVIDER ── -->
-<div class="sdivider"><span class="sdivider__cube"></span><div class="sdivider__line"></div><span class="sdivider__cube"></span></div>
-
-
-<!-- ══════════════════════════════════════════
-     WAITLIST
-     ══════════════════════════════════════════ -->
-<section id="waitlist" class="section section--cta snap-start">
-  <div class="container">
-    <h2 class="section__heading reveal-child">Lorem ipsum<br><span class="text-blue">Whale Mentors</span></h2>
-    <p class="section__sub reveal-child">Lorem ipsum</p>
-    <form class="wl-form reveal-child" novalidate>
-      <input type="email" placeholder="Lorem ipsum" aria-label="Email address" required>
-      <button type="submit" class="btn btn--blue">Lorem ipsum</button>
-    </form>
   </div>
 </section>
 

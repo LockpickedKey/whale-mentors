@@ -48,7 +48,7 @@
 
 
 /* ============================================================
-   HERO CANVAS — DeepBook-style falling bars with wave
+   HERO CANVAS — falling bars with sine wave (DeepBook style)
    ============================================================ */
 (function initCanvas() {
   const canvas = document.getElementById('heroCanvas');
@@ -56,8 +56,14 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const ctx = canvas.getContext('2d');
-  const COL_SPACING = 13;
-  const BAR_W       = 2;
+
+  /* Tuning — increase these to make bars more visible */
+  const COL_SPACING = 12;   /* px between columns */
+  const BAR_W       = 3;    /* bar width px */
+  const BARS_PER_COL = 6;   /* bars per column */
+  const ALPHA_MIN   = 0.18; /* min opacity */
+  const ALPHA_MAX   = 0.55; /* max opacity */
+  const BLUE_CHANCE = 0.08; /* fraction of bars that are blue */
 
   let W, H, bars = [];
 
@@ -65,17 +71,16 @@
     bars = [];
     const numCols = Math.ceil(W / COL_SPACING) + 2;
     for (let col = 0; col < numCols; col++) {
-      const x     = col * COL_SPACING;
-      const count = 4 + Math.floor(Math.random() * 4);
-      for (let k = 0; k < count; k++) {
+      const x = col * COL_SPACING;
+      for (let k = 0; k < BARS_PER_COL; k++) {
         bars.push({
           x,
-          y:     (H / count) * k + Math.random() * (H / count),
-          h:     10 + Math.random() * 50,
-          spd:   25 + Math.random() * 55,
-          alpha: 0.07 + Math.random() * 0.2,
-          blue:  Math.random() < 0.07,
-          phase: col * 0.16 + Math.random() * 0.3,
+          y:     (H / BARS_PER_COL) * k + Math.random() * (H / BARS_PER_COL),
+          h:     12 + Math.random() * 55,
+          spd:   30 + Math.random() * 60,
+          alpha: ALPHA_MIN + Math.random() * (ALPHA_MAX - ALPHA_MIN),
+          blue:  Math.random() < BLUE_CHANCE,
+          phase: col * 0.18,
         });
       }
     }
@@ -93,21 +98,24 @@
   let prev = 0, t = 0;
 
   function draw(ts) {
-    const dt = prev ? Math.min((ts - prev) / 1000, 0.05) : 0;
+    const dt = prev ? Math.min((ts - prev) / 1000, 0.05) : 0.016;
     prev = ts;
     t += dt;
 
     ctx.clearRect(0, 0, W, H);
 
     for (const b of bars) {
-      b.y = (b.y + b.spd * dt + H) % H;
+      /* fall downward, wrap at bottom */
+      b.y += b.spd * dt;
+      if (b.y > H + b.h) b.y -= H + b.h;
 
-      const waveOff = Math.sin(b.phase - t * 0.65) * H * 0.22;
-      const ry      = b.y + waveOff;
+      /* sine wave displaces Y */
+      const waveOff = Math.sin(b.phase - t * 0.6) * H * 0.2;
+      const ry = b.y + waveOff;
 
       if (ry + b.h < 0 || ry > H) continue;
 
-      const [r, g, bv] = b.blue ? [30, 110, 243] : [160, 175, 200];
+      const [r, g, bv] = b.blue ? [30, 110, 243] : [170, 185, 210];
       ctx.fillStyle = `rgba(${r},${g},${bv},${b.alpha})`;
       ctx.fillRect(b.x, ry, BAR_W, b.h);
     }
