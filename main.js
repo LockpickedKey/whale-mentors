@@ -1,17 +1,17 @@
 'use strict';
 
 /* ============================================================
-   TICKER BAR
+   TICKER / PENCIL BAR
    ============================================================ */
 (function initTicker() {
   const bar   = document.getElementById('tickerBar');
   const close = document.getElementById('tickerClose');
-  const nav   = document.getElementById('navbar');
+  const body  = document.body;
   if (!bar || !close) return;
 
   close.addEventListener('click', () => {
     bar.classList.add('is-hidden');
-    if (nav) nav.classList.add('ticker-gone');
+    body.classList.add('ticker-gone');
   });
 })();
 
@@ -55,7 +55,7 @@
   if (!canvas) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx     = canvas.getContext('2d');
   const SPACING = 40;
   const BLUE    = [30, 110, 243];
 
@@ -92,55 +92,24 @@
   let t = 0;
   function draw() {
     ctx.clearRect(0, 0, W, H);
-
     t += 0.016;
     for (const dot of dots) {
       const pulse = (Math.sin(t * dot.speed + dot.phase) + 1) / 2;
-
-      const dx   = dot.x - mouse.x;
-      const dy   = dot.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const prox = Math.max(0, 1 - dist / 160);
-
+      const dx    = dot.x - mouse.x;
+      const dy    = dot.y - mouse.y;
+      const dist  = Math.sqrt(dx * dx + dy * dy);
+      const prox  = Math.max(0, 1 - dist / 160);
       const alpha = 0.08 + pulse * 0.1 + prox * 0.55;
       const r2    = 1.5 + prox * 2;
-
       ctx.beginPath();
       ctx.arc(dot.x, dot.y, r2, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${alpha})`;
       ctx.fill();
     }
-
     requestAnimationFrame(draw);
   }
 
   draw();
-})();
-
-
-/* ============================================================
-   SECTION DIVIDER DOTS — scroll-driven horizontal slide
-   ============================================================ */
-(function initDividers() {
-  const dividers = document.querySelectorAll('.sdivider');
-  if (!dividers.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  function update() {
-    const vh = window.innerHeight;
-    dividers.forEach(div => {
-      const dot  = div.querySelector('.sdivider__dot');
-      if (!dot) return;
-      const rect = div.getBoundingClientRect();
-      const progress = 1 - (rect.top / vh);
-      const clamped  = Math.max(0, Math.min(1, progress));
-      const maxX     = div.offsetWidth - 32;
-      dot.style.transform = `translateY(-50%) translateX(${clamped * maxX}px)`;
-    });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
 })();
 
 
@@ -182,6 +151,32 @@
 
 
 /* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+(function initFaq() {
+  const items = document.querySelectorAll('.faq__item');
+  items.forEach(item => {
+    const btn = item.querySelector('.faq__q');
+    const ans = item.querySelector('.faq__a');
+    if (!btn || !ans) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach(it => {
+        it.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+        const a = it.querySelector('.faq__a');
+        if (a) a.hidden = true;
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+})();
+
+
+/* ============================================================
    SCROLL REVEAL
    ============================================================ */
 (function initReveal() {
@@ -197,7 +192,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { rootMargin: '-50px 0px', threshold: 0.08 });
+  }, { rootMargin: '-40px 0px', threshold: 0.06 });
 
   document.querySelectorAll('.reveal-child').forEach(el => observer.observe(el));
 })();
@@ -223,24 +218,23 @@
       return;
     }
     input.setCustomValidity('');
-
-    btn.textContent = "You're on the list!";
-    btn.disabled    = true;
-    input.disabled  = true;
+    btn.textContent   = "You're on the list!";
+    btn.disabled      = true;
+    input.disabled    = true;
     btn.style.cssText = 'background:#16a34a;border-color:#16a34a;cursor:default;';
 
     const msg = document.createElement('p');
     msg.setAttribute('role', 'status');
     msg.setAttribute('aria-live', 'polite');
     msg.style.cssText = 'position:absolute;left:-9999px';
-    msg.textContent = 'You have been added to the waitlist.';
+    msg.textContent   = 'You have been added to the waitlist.';
     form.appendChild(msg);
   });
 })();
 
 
 /* ============================================================
-   SMOOTH SCROLL
+   SMOOTH SCROLL for anchor links
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
