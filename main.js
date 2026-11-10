@@ -192,7 +192,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { rootMargin: '-40px 0px', threshold: 0.06 });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
 
   document.querySelectorAll('.reveal-child').forEach(el => observer.observe(el));
 })();
