@@ -55,7 +55,7 @@
   const hero = document.getElementById('hero');
   if (!hero || !window.VANTA) return;
 
-  VANTA.WAVES({
+  VANTA.TRUNK({
     el: hero,
     mouseControls: true,
     touchControls: true,
@@ -64,11 +64,10 @@
     minWidth: 200,
     scale: 1.0,
     scaleMobile: 1.0,
-    color: 0x05215e,
-    shininess: 20,
-    waveHeight: 14,
-    waveSpeed: 0.55,
-    zoom: 0.85,
+    color: 0x1E6EF3,
+    backgroundColor: 0x000000,
+    spacing: 2.0,
+    chaos: 2.5,
   });
 })();
 
